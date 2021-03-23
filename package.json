@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "webpack-dev-server --open",
+        "start": "webpack serve --open",
         "test": "jest --no-cache --passWithNoTests --no-cache --runInBand",
         "test:clean": "npm test -- --clearCache",
         "test:watch": "npm test -- --watch",
@@ -45,6 +45,7 @@
         "node-sass": "^5.0.0",
         "prettier": "^2.1.2",
         "sass-loader": "^11.0.1",
+        "style-loader": "^2.0.0",
         "ts-jest": "26.4.1",
         "ts-loader": "^8.0.18",
         "typescript": "4.0.3",
