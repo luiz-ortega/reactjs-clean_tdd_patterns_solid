@@ -1,12 +1,7 @@
-$white: #fff;
-$black: #000;
-$background: #f2f2f2;
-$primary: #880e4f;
-$primaryDark: #560027;
-$primaryLight: #bc477b;
+@import '../../styles/colors.scss';
 
 * {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-s erif;
     font-size: 14px;
     padding: 0;
     margin: 0;
@@ -115,6 +110,22 @@ body {
 
             &:hover {
                 text-decoration: underline;
+            }
+        }
+
+        .errorWrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .spinner {
+                margin-top: 20px;
+            }
+
+            .error {
+                margin-top: 20px;
+                color: $primaryDark;
+                font-weight: bold;
             }
         }
     }
