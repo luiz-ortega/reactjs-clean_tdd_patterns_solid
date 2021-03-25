@@ -43,23 +43,6 @@ body {
     height: 100vh;
     justify-content: space-between;
 
-    .header {
-        display: flex;
-        flex-direction: column;
-        border-top: 4px solid $primaryDark;
-        background-color: $primary;
-        align-items: center;
-
-        img {
-            margin-top: 48px;
-        }
-
-        h1 {
-            color: $white;
-            margin: 16px 0px 40px;
-        }
-    }
-
     .form {
         display: flex;
         flex-direction: column;
@@ -128,10 +111,5 @@ body {
                 font-weight: bold;
             }
         }
-    }
-
-    .footer {
-        background-color: $primary;
-        height: 48px;
     }
 }
