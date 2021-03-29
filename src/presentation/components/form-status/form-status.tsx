@@ -1,12 +1,16 @@
-import React, { memo } from 'react'
+import React, { memo, useContext } from 'react'
 import Spinner from '@/presentation/components/spinner/spinner'
 import Styles from './form-status-styles.scss'
+import Context from '@/presentation/form/form-context'
 
 const Footer: React.FC = () => {
+    const { isLoading, errorMessage } = useContext(Context)
     return (
-        <div className={Styles.errorWrap}>
-            <Spinner className={Styles.spinner} />
-            <span className={Styles.error}>Erro</span>
+        <div data-testid="errorWrap" className={Styles.errorWrap}>
+            {isLoading && <Spinner className={Styles.spinner} />}
+            {errorMessage && (
+                <span className={Styles.error}>{errorMessage}</span>
+            )}
         </div>
     )
 }
