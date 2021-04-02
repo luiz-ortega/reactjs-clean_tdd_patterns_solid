@@ -116,4 +116,22 @@ describe('Login Component', () => {
         ) as HTMLButtonElement
         expect(submitButton.disabled).toBe(false)
     })
+
+    test('Should show spinner on submit', () => {
+        const { sut } = makeSut()
+
+        const emailInput = sut.getByTestId('email')
+        fireEvent.input(emailInput, {
+            target: { value: faker.internet.email() },
+        })
+        const passwordInput = sut.getByTestId('password')
+        fireEvent.input(passwordInput, {
+            target: { value: faker.internet.password() },
+        })
+
+        const submitButton = sut.getByTestId('submitButtom')
+        fireEvent.click(submitButton)
+        const spinner = sut.getByTestId('spinner')
+        expect(spinner).toBeTruthy()
+    })
 })
