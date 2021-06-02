@@ -12,7 +12,11 @@
         "test:ci": "npm test -- --coverage"
     },
     "jest": {
-        "preset": "ts-jest"
+        "preset": "ts-jest",
+        "resetMocks": false,
+        "setupFiles": [
+            "jest-localstorage-mock"
+        ]
     },
     "keywords": [],
     "author": "Luiz Ortega <luizngust@gmail.com>",
