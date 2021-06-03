@@ -8,6 +8,8 @@ import {
 } from '@testing-library/react'
 import 'jest-localstorage-mock'
 import faker from 'faker'
+import { createMemoryHistory } from 'history'
+import { Router } from 'react-router-dom'
 import Login from './login'
 import { ValidationStub, AuthenticationSpy } from '@/presentation/test'
 import { InvalidCredentialsError } from '@/domain/errors'
@@ -21,15 +23,19 @@ type SutParams = {
     validationError: string
 }
 
+const history = createMemoryHistory()
+
 const makeSut = (params?: SutParams): SutTypes => {
     const validationStub = new ValidationStub()
     const authenticationSpy = new AuthenticationSpy()
     validationStub.errorMessage = params?.validationError
     const sut = render(
-        <Login
-            validation={validationStub}
-            authentication={authenticationSpy}
-        />,
+        <Router history={history}>
+            <Login
+                validation={validationStub}
+                authentication={authenticationSpy}
+            />
+        </Router>,
     )
     return {
         sut,
@@ -204,5 +210,15 @@ describe('Login Component', () => {
             'accessToken',
             authenticationSpy.account.accessToken,
         )
+        expect(history.length).toBe(1)
+        expect(history.location.pathname).toBe('/')
+    })
+
+    test('Should go to signup', () => {
+        const { sut } = makeSut()
+        const register = sut.getByTestId('signup')
+        fireEvent.click(register)
+        expect(history.length).toBe(2)
+        expect(history.location.pathname).toBe('/signup')
     })
 })
