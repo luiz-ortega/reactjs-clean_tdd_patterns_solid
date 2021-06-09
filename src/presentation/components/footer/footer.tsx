@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import Logo from '@/presentation/components/logo/logo'
+import { Logo } from '@/presentation/components'
 import Styles from './footer-styles.scss'
 
 const Footer: React.FC = () => {
